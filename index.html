@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>植物クイズ</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>植物クイズ</h1>
+
+  <img id="quizImage">
+
+  <div>
+    <input type="text" id="answer" placeholder="植物名を入力">
+    <button onclick="checkAnswer()">回答</button>
+  </div>
+
+  <p id="result"></p>
+
+  <script>
+  const images = [
+  "アカシデ.jpg",
+  "アメリカガシワ.jpg",
+  "イヌマキ.jpg",
+  "ウメ.jpg",
+  "ウラジロガシ.jpg",
+  "オオシマザクラ.jpg",
+  "オニグルミ.jpg",
+  "カクアジサイ.jpg",
+  "カクレミノ.jpg",
+  "カツラ.jpg",
+  "カナメモチ.jpeg",
+  "カロリナポプラ.jpg",
+  "カンヒザクラ.jpg",
+  "ギボウシ.jpg",
+  "キャラボク.jpg",
+  "クサギ.jpg",
+  "クスノキ.jpg",
+  "クヌギ.jpg",
+  "クロマツ.jpg",
+  "クワ.jpg",
+  "コウヤマキ.jpeg",
+  "コウヨウザン.jpg",
+  "コナラ.jpg",
+  "コノテガシワ.jpg",
+  "コブシ.jpg",
+  "サカキ.jpg",
+  "サザンカ.jpg",
+  "サワラ.jpeg",
+  "サンシュユ.jpg",
+  "シダレザクラ.jpg",
+  "シテンノジ.jpg",
+  "シラカシ.jpg",
+  "シロヤマブキ.jpg",
+  "ズダジイ.jpg",
+  "セイヨウイボタ.jpg",
+  "セイヨウバクチノキ.jpg",
+  "セパルセコイア.jpg",
+  "センリョウ.jpg",
+  "ソメイヨシノ.jpg",
+  "タイサンボク.jpg",
+  "タブノキ.jpg",
+  "チャボヒバ.jpg",
+  "ツワブキ.jpg",
+  "トキワサンザシ.webp",
+  "トベラ.jpg",
+  "ナツツバキ.jpg",
+  "ナンテン.jpg",
+  "ハマヒサカキ.jpg",
+  "ヒサカキ.jpg",
+  "ビナンカズラ.jpg",
+  "ヒマラヤスギ.jpg",
+  "ヒメシャラ.jpg",
+  "ヒュウガミズキ.jpg",
+  "ヒイラ.jpg",
+  "ボケ.jpg",
+  "マダケ.jpg",
+  "マテバシイ.jpg",
+  "マルバシャリンバイ.jpg",
+  "マンサク.jpg",
+  "マンリョウ.jpg",
+  "ミヤマビャクシン.jpg",
+  "メタセコイヤ.jpg",
+  "メビバ.jpg",
+  "モクマオウ.jpg",
+  "モチノキ.jpg",
+  "モッコク.jpeg",
+  "モミジバスズカケノキ.jpg",
+  "モミジバフウ.jpg",
+  "ヤツデ.jpeg",
+  "ヤブツバキ.jpg",
+  "ヤブラン.jpg",
+  "ヤマブキ.jpg",
+  "ヤマモモ.jpg",
+  "ユキヤナギ.jpg",
+  "ユリノキ.jpg"
+];    let currentAnswer = "";
+
+    function nextQuiz() {
+
+      const randomImage =
+        images[Math.floor(Math.random() * images.length)];
+
+      document.getElementById("quizImage").src =
+        "images/" + randomImage;
+
+      currentAnswer =
+        randomImage.replace(".jpg", "");
+
+      document.getElementById("answer").value = "";
+    }
+
+    function checkAnswer() {
+
+      const userAnswer =
+        document.getElementById("answer").value.trim();
+
+      if(userAnswer === currentAnswer) {
+
+        document.getElementById("result").innerText =
+          "正解！";
+
+      } else {
+
+        document.getElementById("result").innerText =
+          "不正解！ 正解は " + currentAnswer;
+
+      }
+
+      setTimeout(nextQuiz, 1500);
+    }
+
+    nextQuiz();
+  </script>
+
+</body>
+</html>
