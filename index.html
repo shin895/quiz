@@ -137,8 +137,8 @@
       document.getElementById("quizImage").src =
         "images/" + randomImage;
 
-      currentAnswer =
-        randomImage.replace(".jpg", "");
+    currentAnswer =
+  randomImage.replace(/\.(jpg|jpeg|webp)$/i, "");
 
       document.getElementById("answer").value = "";
     }
